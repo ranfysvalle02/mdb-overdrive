@@ -1290,6 +1290,7 @@
 
   <script>
   const adminPortalUrl = 'https://m-stash.onrender.com/';
+  const mStashAppKey = 'pk_Qf8XbrF3FiZ2KkqczkRmI_Cp1lhBisFH';
 
   // Utility: Convert standard Google Drive URL into high-speed /preview iframe embed URL
   function formatDrivePreviewUrl(url) {
@@ -1614,6 +1615,7 @@
       // API Request Helper
       const apiRequest = async (path, { method = 'GET', body, authenticated = true } = {}) => {
         const headers = new Headers({ 'Accept': 'application/json' });
+        if (mStashAppKey) headers.set('X-M-Stash-App', mStashAppKey);
         if (body !== undefined) headers.set('Content-Type', 'application/json');
         if (authenticated && token.value) headers.set('Authorization', `Bearer ${token.value}`);
 
